@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="0dip"
+    android:background="@drawable/myshape"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/widget_date"
+        style="@android:style/TextAppearance.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_margin="0dip"
+        android:gravity="left"
+        android:paddingBottom="1dip"
+        android:paddingLeft="6dip"
+        android:paddingRight="2dip"
+        android:paddingTop="1dip"
+        android:text="@string/default_date"
+        android:textSize="16sp" >
+    </TextView>
+
+    <ImageView
+        android:contentDescription="@string/divider"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="1dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="1dp"
+        android:scaleType="fitXY"
+        android:src="@android:drawable/divider_horizontal_dark" />
+
+    <TextView
+        android:id="@+id/widget_food"
+        style="@android:style/TextAppearance.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_margin="0dip"
+        android:gravity="left"
+        android:paddingBottom="1dip"
+        android:paddingLeft="3dip"
+        android:paddingRight="2dip"
+        android:paddingTop="1dip"
+        android:text="@string/default_lunch"
+        android:textSize="13sp" >
+    </TextView>
+
+</LinearLayout>
