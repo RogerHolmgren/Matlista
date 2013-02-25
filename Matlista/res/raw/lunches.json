@@ -1,0 +1,26 @@
+{
+	"a": {
+		"2":"Ost och tomatgratinerad falukorv med potatismos",
+		"3":"Fläskpannkaka med lingonsylt",
+		"4":"Citronbakad fjordlax med dillmajonnäs, kokt potatis",
+		"5":"Kycklingfilé med tomatsås, brytbönor, timjansrostad potatis",
+		"6":"Hamburgare med bröd färsk Pommes samt klassiska tillbehör"},
+	"b": {
+		"2":"Köttfärslimpa med champinjonsås, serveras med rostad potatis",
+		"3":"Torsk med ägg/persiljesås serveras med kokt potatis",
+		"4":"Lasagne",
+		"5":"Fiskpinnar med potatismos och remouladsås",
+		"6":"Panpizza med ost skinka"},
+	"c": {
+		"2":"Biffstroganof med ris",
+		"3":"Kycklingfilé med currysås och rostad potatis",
+		"4":"Fisksoppa med bröd",
+		"5":"Kalvfärsbiff med gräddsås, kokt potatis",
+		"6":"Lunchkorv med potatismos gurkmajonnäs"},
+	"d": {
+		"2":"Pytt i panna med inlagda rödbetor",
+		"3":"Kolja med hummersås, kokt potatis",
+		"4":"Spagetti med köttfärssås",
+		"5":"Kycklinggryta med kokt potatis",
+		"6":"Oxfärsbiff med gräddsås, rostad kulpotatis"}
+}
