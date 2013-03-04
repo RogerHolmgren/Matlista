@@ -7,6 +7,7 @@
     
     <string name="default_date">Dagen vXX</string>
     <string name="default_lunch">Mumsig mat med mer mat, med massa microber</string>
+    <string name="no_lunch">Ingen mat på helgen</string>
     
     <string name="divider">divider</string>
 

@@ -15,38 +15,60 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.RemoteViews;
 
 public class LunchWidgetProvider extends AppWidgetProvider {
 
+    private String TODAY_PREFS = "today";
+
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+	boolean today = toggleToday(context);
+
+	Calendar c = Calendar.getInstance();
+	if (today == false)
+	    c.add(Calendar.DATE, 1);
+
+	int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+	int weekOfYear = c.get(Calendar.WEEK_OF_YEAR);
+
 	int[] allWidgetIds = getAllWidgetIds(context, appWidgetManager);
 	for (int widgetId : allWidgetIds) {
 	    RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.lunch_widget);
 
-	    Calendar c = Calendar.getInstance();
-	    int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
-	    int weekOfYear = c.get(Calendar.WEEK_OF_YEAR);
-
 	    try {
-		JSONObject entireLunchList = getJsonObjectFromRes(context, R.raw.lunches);
-		JSONObject thisWeek = entireLunchList.getJSONObject(getWeekCode(weekOfYear));
+		if (dayOfWeek == 1 || dayOfWeek == 7) {
+		    // sunday or saturday
+		    remoteViews.setTextViewText(R.id.widget_food, context.getText(R.string.no_lunch));
+		} else {
+		    JSONObject entireLunchList = getJsonObjectFromRes(context, R.raw.lunches);
+		    JSONObject thisWeek = entireLunchList.getJSONObject(getWeekCode(weekOfYear));
 
-		String todaysLunch = (String) thisWeek.get("" + dayOfWeek);
-
-		remoteViews.setTextViewText(R.id.widget_date, getReadableDayOfWeek(dayOfWeek) + " v"
-			+ weekOfYear);
-		remoteViews.setTextViewText(R.id.widget_food, todaysLunch);
+		    String todaysLunch = (String) thisWeek.get("" + dayOfWeek);
+		    remoteViews.setTextViewText(R.id.widget_food, todaysLunch);
+		}
 	    } catch (JSONException e) {
 		e.printStackTrace();
+	    } finally {
+		String dateString = (today == true) ? "Idag " : "Imorgon ";
+		dateString += getReadableDayOfWeek(dayOfWeek) + " v" + weekOfYear;
+		remoteViews.setTextViewText(R.id.widget_date, dateString);
 	    }
 
 	    registerOnClickListener(context, appWidgetIds, remoteViews);
 
 	    appWidgetManager.updateAppWidget(widgetId, remoteViews);
 	}
+    }
+
+    private boolean toggleToday(Context context) {
+	SharedPreferences settings = context.getSharedPreferences("prefs", 0);
+	boolean today = settings.getBoolean(TODAY_PREFS, false);
+	today = today == true ? false : true;
+	settings.edit().putBoolean(TODAY_PREFS, today).commit();
+	return today;
     }
 
     private String getReadableDayOfWeek(int dayOfWeek) {
