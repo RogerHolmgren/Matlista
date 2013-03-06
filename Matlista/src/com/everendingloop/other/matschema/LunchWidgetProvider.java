@@ -53,7 +53,7 @@ public class LunchWidgetProvider extends AppWidgetProvider {
 		e.printStackTrace();
 	    } finally {
 		String dateString = (today == true) ? "Idag " : "Imorgon ";
-		dateString += getReadableDayOfWeek(dayOfWeek) + " v" + weekOfYear;
+		dateString += getReadableDayOfWeek(dayOfWeek);
 		remoteViews.setTextViewText(R.id.widget_date, dateString);
 	    }
 
@@ -74,21 +74,21 @@ public class LunchWidgetProvider extends AppWidgetProvider {
     private String getReadableDayOfWeek(int dayOfWeek) {
 	switch (dayOfWeek) {
 	case 1:
-	    return "Söndag";
+	    return "söndag";
 	case 2:
-	    return "Måndag";
+	    return "måndag";
 	case 3:
-	    return "Tisdag";
+	    return "tisdag";
 	case 4:
-	    return "Onsdag";
+	    return "onsdag";
 	case 5:
-	    return "Torsdag";
+	    return "torsdag";
 	case 6:
-	    return "Fredag";
+	    return "fredag";
 	case 7:
-	    return "Lördag";
+	    return "lördag";
 	default:
-	    return "Invalid Day";
+	    return "Frabjous day";
 	}
     }
 
